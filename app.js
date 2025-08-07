@@ -2,8 +2,6 @@ const express = require('express');
 const ejs = require('ejs');
 const path = require('path');
 const bodyParser = require('body-parser');
-const multer = require('multer');
-const upload = multer();
 const _ = require("lodash");
 const axios = require('axios').default;
 require('dotenv').config();
@@ -175,17 +173,6 @@ app.post('/enquiry/request', (req, res) => {
         });
     }
 });
-
-// API section
-var product = require('./api/routes/product');
-var images = require('./api/routes/images');
-var enquiry = require('./api/routes/enquiry');
-var categoryApi = require('./api/routes/category');
-
-app.use('/api/product', product);
-app.use('/api/images', images);
-app.use('/api/enquiry', enquiry);
-app.use("/api/category", categoryApi);
 
 app.get('/404', (req, res) => {
     res.render('404');
